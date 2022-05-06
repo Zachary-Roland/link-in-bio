@@ -4,9 +4,9 @@ import { GitHub, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 type HeaderProps = {
 	isXs: boolean;
 	isSm: boolean;
-}
+};
 
-const Header = ({ isXs, isSm}: HeaderProps) => {
+const Header = ({ isXs, isSm }: HeaderProps) => {
 	const jobDetails: { role: string; company: string } = {
 		role: "React Developer",
 		company: "Talent Plus",
@@ -23,13 +23,18 @@ const Header = ({ isXs, isSm}: HeaderProps) => {
 			<Grid item xs={12}>
 				<Avatar
 					alt="Zachary Roland Profile Picture"
-					src={require('../AvatarImg.jpeg')}
-					sx={ isXs ? { width: 100, height: 100 } : 
-					isSm ? { width: 120, height: 120 } : { width: 160, height: 160 }}
+					src={require("../AvatarImg.jpeg")}
+					sx={
+						isXs
+							? { width: 100, height: 100 }
+							: isSm
+							? { width: 120, height: 120 }
+							: { width: 160, height: 160 }
+					}
 				/>
 			</Grid>
 			<Grid item xs={12}>
-				<Typography variant="h5">Zachary Roland</Typography>
+				<Typography variant={isXs ? "h5" : isSm ? "h4" : "h3" }>Zachary Roland</Typography>
 			</Grid>
 			<Grid item xs={12}>
 				<Typography>{`${jobDetails.role} @ ${jobDetails.company}`}</Typography>

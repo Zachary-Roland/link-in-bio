@@ -4,17 +4,17 @@ import "@fontsource/roboto";
 import { Container, Grid, Typography } from "@mui/material";
 import Header from "./components/Header";
 import Links from "./components/Links";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { Box } from "@mui/system";
 
 function App() {
-  const isXs: boolean = useMediaQuery('(max-width:400px)')
-	const isSm: boolean = useMediaQuery('(max-width:600px)');
+	const isXs: boolean = useMediaQuery("(max-width:420px)");
+	const isSm: boolean = useMediaQuery("(max-width:600px)");
 	return (
-		<Container sx={{ paddingTop: "48px", paddingBottom: "48px" }}>
-			<Header isXs={isXs} isSm={isSm}/>
-			<Links isXs={isXs} isSm={isSm}/>
-      {/* <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
+		<Container sx={{ paddingTop: "48px", paddingBottom: "48px", minWidth: "320px" }}>
+			<Header isXs={isXs} isSm={isSm} />
+			<Links isXs={isXs} isSm={isSm} />
+			{/* <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
         <Grid container alignItems={"center"} justifyContent={"center"}>
         <Grid item xs={12} 
 			spacing={0}
