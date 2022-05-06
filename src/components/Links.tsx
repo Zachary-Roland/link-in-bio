@@ -7,7 +7,7 @@ interface LinkObj {
 type LinkProps = {
 	isXs: boolean;
 	isSm: boolean;
-}
+};
 
 const Links = ({ isXs, isSm }: LinkProps) => {
 	const links: LinkObj[] = [
@@ -29,8 +29,20 @@ const Links = ({ isXs, isSm }: LinkProps) => {
 			justifyContent={"center"}
 		>
 			{links.map((link) => (
-				<Grid key={`${link.text} button`} item xs={12} sx={{ margin: "15px"}}>
-					<Button variant="contained" href={link.url} sx={{ width: "250px", height: "50px" }}>{link.text}</Button>
+				<Grid key={`${link.text} button`} item xs={12} sx={{ margin: "15px" }}>
+					<Button
+						variant="contained"
+						href={link.url}
+                        sx={
+                            isXs
+                                ? { width: "250px", height: "50px" }
+                                : isSm
+                                ? { width: "350px", height: "70px" }
+                                : { width: "450px", height: "90px" }
+                        }
+					>
+						{link.text}
+					</Button>
 				</Grid>
 			))}
 		</Grid>
