@@ -12,6 +12,7 @@ function App() {
 	return (
     <ThemeProvider theme={darkTheme}>
 		<Container
+      maxWidth={false}
 			sx={{ paddingTop: "48px", paddingBottom: "48px", minWidth: "320px", height: "100vh" }}
 		>
 			<Header isXs={isXs} isSm={isSm} />
