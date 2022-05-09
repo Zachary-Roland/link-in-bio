@@ -1,17 +1,19 @@
 import React from "react";
 import "@fontsource/roboto";
-// import './App.css';
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, ThemeProvider, Typography } from "@mui/material";
 import Header from "./components/Header";
 import Links from "./components/Links";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Box } from "@mui/system";
+import darkTheme from "./components/styles";
 
 function App() {
 	const isXs: boolean = useMediaQuery("(max-width:420px)");
 	const isSm: boolean = useMediaQuery("(max-width:600px)");
 	return (
-		<Container sx={{ paddingTop: "48px", paddingBottom: "48px", minWidth: "320px" }}>
+    <ThemeProvider theme={darkTheme}>
+		<Container
+			sx={{ paddingTop: "48px", paddingBottom: "48px", minWidth: "320px", height: "100vh" }}
+		>
 			<Header isXs={isXs} isSm={isSm} />
 			<Links isXs={isXs} isSm={isSm} />
 			{/* <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
@@ -27,6 +29,7 @@ function App() {
         </Grid>
       </Box> */}
 		</Container>
+    </ThemeProvider>
 	);
 }
 
