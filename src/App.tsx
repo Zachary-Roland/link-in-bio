@@ -4,7 +4,8 @@ import { Container, Grid, ThemeProvider, Typography } from "@mui/material";
 import Header from "./components/Header";
 import Links from "./components/Links";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import darkTheme from "./components/styles";
+import darkTheme from "./common/styles";
+import Appbar from "./components/Appbar";
 
 function App() {
 	const isXs: boolean = useMediaQuery("(max-width:420px)");
@@ -13,8 +14,9 @@ function App() {
     <ThemeProvider theme={darkTheme}>
 		<Container
       maxWidth={false}
-			sx={{ paddingTop: "48px", paddingBottom: "48px", minWidth: "320px", height: "100vh" }}
+			sx={{ paddingTop: "24px", paddingBottom: "48px", minWidth: "320px", height: "100vh" }}
 		>
+      <Appbar />
 			<Header isXs={isXs} isSm={isSm} />
 			<Links isXs={isXs} isSm={isSm} />
 			{/* <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
