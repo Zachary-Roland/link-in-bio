@@ -1,5 +1,5 @@
 import { Button, Grid, Typography } from "@mui/material";
-import "../App.css";
+import "../common/App.css";
 interface LinkObj {
 	text: string;
 	url: string;
