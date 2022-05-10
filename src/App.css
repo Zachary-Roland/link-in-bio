@@ -1,41 +1,64 @@
 body {
-  font-family: "Roboto";
-}
-.App {
-  text-align: center;
+	font-family: "Roboto";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+	--textColor1: #008cff;
+	--textColor2: #fff;
+	--textColor3: #737594;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html,
+body {
+	height: 100%;
+}
+body {
+	background-color: #0e0e30;
+	margin: 0;
+}
+.wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 60px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.MuiButton {
+	transition: 0.3s ease-in-out;
+	transition-property: background, color;
+	border-radius: 26px;
+	background-image: linear-gradient(
+		90deg,
+		#0065ff,
+		#6942ef,
+		#6554c0,
+		#008cff,
+		#0065ff,
+		#6942ef
+	);
+	background-size: 400%;
+	background-position: 0% 0%;
 }
 
-.App-link {
-  color: #61dafb;
+.MuiButton:hover {
+	animation: gradientRotate 2s infinite;
+}
+.MuiButton:hover::before {
+	opacity: 1;
+	animation: gradientRotate 4s infinite;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MuiButton:active {
+	color: #c3c4d5;
+}
+
+@keyframes gradientRotate {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 100% 100%;
+	}
 }
