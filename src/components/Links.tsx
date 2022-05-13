@@ -1,6 +1,8 @@
 import { Button, Grid, IconButton, Typography } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "../common/App.css";
+import { useNavigate } from "react-router-dom";
 interface LinkObj {
 	text: string;
 	url: string;
@@ -14,6 +16,12 @@ type LinkProps = {
 };
 
 const Links = ({ isXs, isSm, isAdmin, fontSize }: LinkProps) => {
+	const navigate = useNavigate();
+	const handleClick = (path: string) => {
+		if (!isAdmin) {
+			navigate(path);
+		}
+	};
 	const links: LinkObj[] = [
 		{
 			text: "💼 Check out my resume",
@@ -42,22 +50,29 @@ const Links = ({ isXs, isSm, isAdmin, fontSize }: LinkProps) => {
 					<Button
 						className="MuiButton"
 						variant="contained"
-						href={link.url}
+						onClick={() => handleClick(link.url)}
 						sx={
 							isXs
 								? { width: "250px", height: "50px" }
 								: isSm
 								? { width: "350px", height: "70px" }
-								: { width: "450px", height: "90px" }
+								: { width: isAdmin ? "400px" : "450px", height: "90px" }
 						}
 					>
 						<Typography variant={isXs ? "body2" : isSm ? "body1" : "h6"}>
 							{link.text}
 						</Typography>
+						{isAdmin ? (
+							<>
+								<IconButton sx={{ marginLeft: (isXs ? "5px" : isSm ? "10px" : "15px") }}>
+									<EditIcon fontSize={isSm ? "small" : "medium"} />
+								</IconButton>
+								<IconButton>
+									<DeleteIcon fontSize={isSm ? "small" : "medium"} />
+								</IconButton>
+							</>
+						) : null}
 					</Button>
-					{isAdmin ? (<IconButton>
-						<EditIcon fontSize={fontSize} />
-					</IconButton>) : null }
 				</Grid>
 			))}
 		</Grid>
