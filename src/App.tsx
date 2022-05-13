@@ -26,7 +26,7 @@ function App() {
 				<Appbar isXs={isXs} isSm={isSm} />
 				<Routes>
 					<Route
-						path="*"
+						path="/"
 						element={
 							<>
 								<Header isXs={isXs} isSm={isSm} />
@@ -34,7 +34,7 @@ function App() {
 							</>
 						}
 					/>
-          <Route path="/login" element={<Login />}/>
+          <Route path="/login" element={<Login isXs={isXs} isSm={isSm} />}/>
 				</Routes>
 
 				{/* <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
