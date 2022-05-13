@@ -8,9 +8,10 @@ interface LinkObj {
 type LinkProps = {
 	isXs: boolean;
 	isSm: boolean;
+	isAdmin: boolean;
 };
 
-const Links = ({ isXs, isSm }: LinkProps) => {
+const Links = ({ isXs, isSm, isAdmin }: LinkProps) => {
 	const links: LinkObj[] = [
 		{
 			text: "💼 Check out my resume",
