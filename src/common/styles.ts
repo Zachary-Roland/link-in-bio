@@ -8,6 +8,7 @@ declare module "@mui/material/styles" {
 
 const darkTheme = createTheme({
 	palette: {
+		contrastThreshold: 4.5,
 		mode: "dark",
 		primary: {
 			main: "#6846E5",
@@ -18,6 +19,9 @@ const darkTheme = createTheme({
 			main: "#f50057",
 			light: "#ff5983",
 			dark: "#bb002f"
+		},
+		info: {
+			main: "#2719b2",
 		},
 		background: {
 			default: "#121421",
