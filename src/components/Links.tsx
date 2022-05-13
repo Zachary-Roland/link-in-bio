@@ -32,6 +32,7 @@ const Links = ({ isXs, isSm }: LinkProps) => {
 			direction="column"
 			alignItems={"center"}
 			justifyContent={"center"}
+			sx={{marginTop: "24px"}}
 		>
 			{links.map((link) => (
 				<Grid key={`${link.text} button`} item xs={12} sx={{ margin: "15px" }}>
