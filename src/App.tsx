@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "@fontsource/roboto";
 import { Container, Grid, ThemeProvider, Typography } from "@mui/material";
 import Header from "./components/Header";
@@ -13,6 +13,11 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 	const isXs: boolean = useMediaQuery("(max-width:420px)");
 	const isSm: boolean = useMediaQuery("(max-width:600px)");
+  const fontSize = isSm ? "medium" : "large";
+  useEffect(() => {
+    console.log("isAdmin: ", isAdmin)
+  }, [isAdmin])
+  
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<Container
@@ -24,14 +29,14 @@ function App() {
 					height: "100vh",
 				}}
 			>
-				<Appbar isXs={isXs} isSm={isSm} />
+				<Appbar isXs={isXs} isSm={isSm} fontSize={fontSize} />
 				<Routes>
 					<Route
 						path="/"
 						element={
 							<>
 								<Header isXs={isXs} isSm={isSm} />
-								<Links isXs={isXs} isSm={isSm} isAdmin={isAdmin} />
+								<Links isXs={isXs} isSm={isSm} isAdmin={isAdmin} fontSize={fontSize} />
 							</>
 						}
 					/>
