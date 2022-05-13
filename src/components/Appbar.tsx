@@ -2,18 +2,24 @@ import { Grid, IconButton } from "@mui/material";
 import { Settings, DarkMode, LightMode } from "@mui/icons-material";
 import { useState } from "react";
 
-const Appbar = () => {
-	const [isDark, setIsDark] = useState(true);
+type AppbarProps = {
+	isXs: boolean;
+	isSm: boolean;
+};
 
+const Appbar = ({ isXs, isSm }: AppbarProps) => {
+	const [isDark, setIsDark] = useState(true);
+	const fontSize = isSm ? "medium" : "large";
+	const iconSx = { color: "primary.main", "&:hover": { color: "#fff", backgroundColor: "background.default" }}
 	return (
-		<Grid container>
+		<Grid container sx={ isSm ? null : { marginTop: "12px" } }>
 			<Grid item xs={3}>
-				<IconButton size={"large"}>{isDark ? <LightMode /> : <DarkMode />}</IconButton>
+				<IconButton sx={iconSx} onClick={()=> setIsDark(!isDark)}>{isDark ? <LightMode fontSize={fontSize} /> : <DarkMode fontSize={fontSize}/>}</IconButton>
 			</Grid>
             <Grid item xs={6} />
 			<Grid container xs={3} justifyContent={"end"}>
-				<IconButton size={"large"}>
-					<Settings />
+				<IconButton sx={iconSx} >
+					<Settings fontSize={fontSize }/>
 				</IconButton>
 			</Grid>
 		</Grid>
