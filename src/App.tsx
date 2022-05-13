@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "@fontsource/roboto";
 import { Container, Grid, ThemeProvider, Typography } from "@mui/material";
 import Header from "./components/Header";
@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 
 function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
 	const isXs: boolean = useMediaQuery("(max-width:420px)");
 	const isSm: boolean = useMediaQuery("(max-width:600px)");
 	return (
@@ -30,11 +31,11 @@ function App() {
 						element={
 							<>
 								<Header isXs={isXs} isSm={isSm} />
-								<Links isXs={isXs} isSm={isSm} />
+								<Links isXs={isXs} isSm={isSm} isAdmin={isAdmin} />
 							</>
 						}
 					/>
-          <Route path="/login" element={<Login isXs={isXs} isSm={isSm} />}/>
+          <Route path="/login" element={<Login isXs={isXs} isSm={isSm} isAdmin={isAdmin} setIsAdmin={setIsAdmin} />}/>
 				</Routes>
 
 				{/* <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
