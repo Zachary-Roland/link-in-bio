@@ -1,4 +1,5 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, IconButton, Typography } from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
 import "../common/App.css";
 interface LinkObj {
 	text: string;
@@ -9,9 +10,10 @@ type LinkProps = {
 	isXs: boolean;
 	isSm: boolean;
 	isAdmin: boolean;
+	fontSize: "small" | "inherit" | "large" | "medium" | undefined;
 };
 
-const Links = ({ isXs, isSm, isAdmin }: LinkProps) => {
+const Links = ({ isXs, isSm, isAdmin, fontSize }: LinkProps) => {
 	const links: LinkObj[] = [
 		{
 			text: "💼 Check out my resume",
@@ -53,6 +55,9 @@ const Links = ({ isXs, isSm, isAdmin }: LinkProps) => {
 							{link.text}
 						</Typography>
 					</Button>
+					{isAdmin ? (<IconButton>
+						<EditIcon fontSize={fontSize} />
+					</IconButton>) : null }
 				</Grid>
 			))}
 		</Grid>

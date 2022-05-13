@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom";
 type AppbarProps = {
 	isXs: boolean;
 	isSm: boolean;
+	fontSize: "small" | "inherit" | "large" | "medium" | undefined;
 };
 
-const Appbar = ({ isXs, isSm }: AppbarProps) => {
+const Appbar = ({ isXs, isSm, fontSize }: AppbarProps) => {
 	const navigate = useNavigate();
 	const [isDark, setIsDark] = useState(true);
-	const fontSize = isSm ? "medium" : "large";
 	const darkHover = { color: "primary.main", backgroundColor: "background.default"};
 	const lightHover = { color: "#e5a546", backgroundColor: "background.default" }
 	const iconSx = { color: "#383a48", "&:hover": darkHover} 
