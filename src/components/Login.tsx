@@ -5,10 +5,17 @@ import { useNavigate } from "react-router-dom";
 type LoginProps = {
 	isXs: boolean;
 	isSm: boolean;
+    isAdmin: boolean;
+    setIsAdmin: Function;
 };
 
-const Login = ({ isXs, isSm }: LoginProps) => {
+const Login = ({ isXs, isSm, isAdmin, setIsAdmin }: LoginProps) => {
 	const navigate = useNavigate();
+    const handleLogin = () => {
+        //TODO if email and username match log in, then do this
+        setIsAdmin(true);
+        navigate("/")
+    }
 	return (
 		<Grid
 			container
@@ -42,7 +49,7 @@ const Login = ({ isXs, isSm }: LoginProps) => {
 						<TextField label="Password" color="info" sx={{ margin: "12px" }} />
 						<Grid item sx={{ marginTop: "24px" }}>
 							<Button
-								onClick={() => navigate("/")}
+								onClick={() => handleLogin()}
 								sx={{
 									margin: "12px",
 									borderColor: "secondary.main",
