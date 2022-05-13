@@ -32,7 +32,7 @@ const Links = ({ isXs, isSm }: LinkProps) => {
 			direction="column"
 			alignItems={"center"}
 			justifyContent={"center"}
-			sx={{marginTop: "24px"}}
+			sx={{ marginTop: "24px" }}
 		>
 			{links.map((link) => (
 				<Grid key={`${link.text} button`} item xs={12} sx={{ margin: "15px" }}>
@@ -48,7 +48,9 @@ const Links = ({ isXs, isSm }: LinkProps) => {
 								: { width: "450px", height: "90px" }
 						}
 					>
-						<Typography variant={ isXs ? "body2": isSm ? "body1" : "h6" }>{link.text}</Typography>
+						<Typography variant={isXs ? "body2" : isSm ? "body1" : "h6"}>
+							{link.text}
+						</Typography>
 					</Button>
 				</Grid>
 			))}
