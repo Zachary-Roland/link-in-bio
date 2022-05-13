@@ -17,11 +17,11 @@ const Links = ({ isXs, isSm }: LinkProps) => {
 			url: "https://drive.google.com/file/d/1Yza--EjkHYr69XBa9KDQnmNzc_aSU7u7/view?usp=sharing",
 		},
 		{
-			text: "🎧 Listen to Bokr Tov",
+			text: "🎸 Listen to Bokr Tov",
 			url: "https://bokrtov.bandcamp.com/",
 		},
 		{
-			text: "🎧 Listen to Big Nope",
+			text: "🎸 Listen to Big Nope",
 			url: "https://bignopebignope.bandcamp.com/",
 		},
 	];
