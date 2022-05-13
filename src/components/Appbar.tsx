@@ -10,7 +10,7 @@ type AppbarProps = {
 const Appbar = ({ isXs, isSm }: AppbarProps) => {
 	const [isDark, setIsDark] = useState(true);
 	const fontSize = isSm ? "medium" : "large";
-	const iconSx = { color: "primary.main", "&:hover": { color: "#fff", backgroundColor: "background.default" }}
+	const iconSx = { color: "#383a48", "&:hover": { color: "primary.main", backgroundColor: "background.default" }}
 	return (
 		<Grid container sx={ isSm ? null : { marginTop: "12px" } }>
 			<Grid item xs={3}>
