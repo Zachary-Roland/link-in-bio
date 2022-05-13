@@ -14,9 +14,9 @@ function App() {
     <ThemeProvider theme={darkTheme}>
 		<Container
       maxWidth={false}
-			sx={{ paddingTop: "24px", paddingBottom: "48px", minWidth: "320px", height: "100vh" }}
+			sx={{ paddingTop: "12px", paddingBottom: "48px", minWidth: "320px", height: "100vh" }}
 		>
-      <Appbar />
+      <Appbar isXs={isXs} isSm={isSm} />
 			<Header isXs={isXs} isSm={isSm} />
 			<Links isXs={isXs} isSm={isSm} />
 			{/* <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}}>
