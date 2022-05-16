@@ -41,7 +41,7 @@ const darkTheme = createTheme({
 				},
 			},
 		},
-        MuiButton: {
+        MuiCard: {
             styleOverrides: {
                 root: {
                     border: '1px solid #121421',
