@@ -29,6 +29,10 @@ const Login = ({ isXs, isSm, isAdmin, setIsAdmin }: LoginProps) => {
 				sx={{
 					backgroundColor: "secondary.main",
 					width: isXs ? "290px" : isSm ? "375px" : "400px",
+                    "&:hover": {
+                        borderColor: "background.default",
+                        boxShadow: "none",
+                    }
 				}}
 			>
 				<CardContent>
