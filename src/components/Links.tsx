@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from "@mui/icons-material/Add";
 import "../common/App.css";
 import { useNavigate } from "react-router-dom";
 interface LinkObj {
@@ -49,7 +50,7 @@ const Links = ({ isXs, isSm, isAdmin, fontSize }: LinkProps) => {
 		<Grid
 			container
 			spacing={0}
-			direction="column"
+			direction={"column"}
 			alignItems={"center"}
 			justifyContent={"center"}
 			sx={{ marginTop: "24px" }}
@@ -65,14 +66,14 @@ const Links = ({ isXs, isSm, isAdmin, fontSize }: LinkProps) => {
 								? { width: "260px", height: "50px" }
 								: isSm
 								? { width: "350px", height: "70px" }
-								: { width: "350px", height: "70px" }
+								: { width: "450px", height: "90px" }
 						}
 					>
 						<CardActionArea className="MuiButton" sx={{ height: "100%" }}>
 							<Grid
 								container
 								spacing={0}
-								direction="row"
+								direction={"row"}
 								alignItems={"center"}
 								justifyContent={"center"}
 							>
@@ -82,13 +83,24 @@ const Links = ({ isXs, isSm, isAdmin, fontSize }: LinkProps) => {
 									</Typography>
 								</Grid>
 								{isAdmin ? (
-									<Grid item xs={4}>
+									<Grid container xs={4} justifyContent={"end"}>
 										<IconButton
-											sx={{ marginLeft: isXs ? "5px" : isSm ? "10px" : "15px" }}
+											sx={{
+												"&:hover": {
+													backgroundColor: "secondary.main",
+												},
+											}}
 										>
 											<EditIcon fontSize={isSm ? "small" : "medium"} />
 										</IconButton>
-										<IconButton>
+										<IconButton
+											sx={{
+												marginRight: isXs ? "5px" : isSm ? "10px" : "15px",
+												"&:hover": {
+													backgroundColor: "secondary.main",
+												},
+											}}
+										>
 											<DeleteIcon fontSize={isSm ? "small" : "medium"} />
 										</IconButton>
 									</Grid>
@@ -98,6 +110,13 @@ const Links = ({ isXs, isSm, isAdmin, fontSize }: LinkProps) => {
 					</Card>
 				</Grid>
 			))}
+			{isAdmin && (
+				<Grid item xs={12} sx={{ margin: "24px" }}>
+					<Fab color="secondary" sx={{ color: "#fff" }}>
+						<AddIcon />
+					</Fab>
+				</Grid>
+			)}
 		</Grid>
 	);
 };
