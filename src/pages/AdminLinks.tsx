@@ -1,4 +1,4 @@
-import { useState, useEffect, type FormEvent } from "react";
+import { useState, useEffect, useRef, type FormEvent } from "react";
 import {
   collection,
   addDoc,
@@ -91,6 +91,8 @@ export default function AdminLinks() {
   const [url, setUrl] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [youtubeEnabled, setYoutubeEnabled] = useState(false);
+  const [ytSaved, setYtSaved] = useState(false);
+  const ytSavedTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   // Sync local state when Firestore settings load
   useEffect(() => {
@@ -155,6 +157,9 @@ export default function AdminLinks() {
       youtubeUrl,
       youtubeEnabled,
     });
+    setYtSaved(true);
+    clearTimeout(ytSavedTimer.current);
+    ytSavedTimer.current = setTimeout(() => setYtSaved(false), 2000);
   }
 
   return (
@@ -246,12 +251,17 @@ export default function AdminLinks() {
           onChange={(e) => setYoutubeUrl(e.target.value)}
           className="w-full bg-transparent border border-terminal-green-faint rounded px-3 py-2 text-sm text-terminal-green focus:outline-none focus:border-terminal-green"
         />
-        <button
-          onClick={handleYoutubeSettingsSave}
-          className="border border-terminal-green text-terminal-green px-4 py-1.5 rounded text-sm hover:bg-terminal-green-dim transition-colors"
-        >
-          save youtube settings
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleYoutubeSettingsSave}
+            className="border border-terminal-green text-terminal-green px-4 py-1.5 rounded text-sm hover:bg-terminal-green-dim transition-colors"
+          >
+            save youtube settings
+          </button>
+          {ytSaved && (
+            <span className="text-xs text-terminal-green">saved!</span>
+          )}
+        </div>
       </div>
     </div>
   );

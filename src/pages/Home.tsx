@@ -23,8 +23,8 @@ export default function Home() {
         className="w-28 h-28 rounded-full border-2 border-terminal-green-faint mb-4"
       />
       <h1 className="text-2xl font-bold">Zachary Roland</h1>
-      <p className="text-terminal-green-muted mb-4">
-        software engineer // musician
+      <p className="text-terminal-green-muted mb-4 text-center text-sm sm:text-base">
+        developer // fashion designer // musician
       </p>
 
       {links.map((link) => (
