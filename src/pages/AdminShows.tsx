@@ -18,6 +18,7 @@ export default function AdminShows() {
   const [venue, setVenue] = useState("");
   const [city, setCity] = useState("");
   const [ticketUrl, setTicketUrl] = useState("");
+  const [error, setError] = useState("");
 
   function startEdit(show: Show) {
     setEditing(show);
@@ -37,33 +38,48 @@ export default function AdminShows() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const data = {
-      date: Timestamp.fromDate(new Date(date + "T00:00:00")),
-      venue,
-      city,
-      ticketUrl: ticketUrl || null,
-    };
+    setError("");
+    try {
+      const data = {
+        date: Timestamp.fromDate(new Date(date + "T00:00:00")),
+        venue,
+        city,
+        ticketUrl: ticketUrl || null,
+      };
 
-    if (editing) {
-      await updateDoc(doc(db, "shows", editing.id), data);
-    } else {
-      await addDoc(collection(db, "shows"), {
-        ...data,
-        createdAt: serverTimestamp(),
-      });
+      if (editing) {
+        await updateDoc(doc(db, "shows", editing.id), data);
+      } else {
+        await addDoc(collection(db, "shows"), {
+          ...data,
+          createdAt: serverTimestamp(),
+        });
+      }
+      resetForm();
+    } catch (err) {
+      setError(`Failed to save show: ${err instanceof Error ? err.message : "unknown error"}`);
     }
-    resetForm();
   }
 
   async function handleDelete(id: string) {
     if (!confirm("Delete this show?")) return;
-    await deleteDoc(doc(db, "shows", id));
+    setError("");
+    try {
+      await deleteDoc(doc(db, "shows", id));
+    } catch (err) {
+      setError(`Failed to delete show: ${err instanceof Error ? err.message : "unknown error"}`);
+    }
   }
 
   const now = new Date();
 
   return (
     <div className="space-y-8">
+      {error && (
+        <div className="border border-red-400 rounded px-4 py-2 text-sm text-red-400">
+          {error}
+        </div>
+      )}
       {/* Show Form */}
       <form onSubmit={handleSubmit} className="space-y-3">
         <h2 className="text-sm font-bold text-terminal-green-muted">

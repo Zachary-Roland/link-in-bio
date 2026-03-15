@@ -91,6 +91,7 @@ export default function AdminLinks() {
   const [url, setUrl] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [youtubeEnabled, setYoutubeEnabled] = useState(false);
+  const [error, setError] = useState("");
   const [ytSaved, setYtSaved] = useState(false);
   const ytSavedTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -119,22 +120,32 @@ export default function AdminLinks() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    if (editing) {
-      await updateDoc(doc(db, "links", editing.id), { label, url });
-    } else {
-      await addDoc(collection(db, "links"), {
-        label,
-        url,
-        order: links.length,
-        createdAt: serverTimestamp(),
-      });
+    setError("");
+    try {
+      if (editing) {
+        await updateDoc(doc(db, "links", editing.id), { label, url });
+      } else {
+        await addDoc(collection(db, "links"), {
+          label,
+          url,
+          order: links.length,
+          createdAt: serverTimestamp(),
+        });
+      }
+      resetForm();
+    } catch (err) {
+      setError(`Failed to save link: ${err instanceof Error ? err.message : "unknown error"}`);
     }
-    resetForm();
   }
 
   async function handleDelete(id: string) {
     if (!confirm("Delete this link?")) return;
-    await deleteDoc(doc(db, "links", id));
+    setError("");
+    try {
+      await deleteDoc(doc(db, "links", id));
+    } catch (err) {
+      setError(`Failed to delete link: ${err instanceof Error ? err.message : "unknown error"}`);
+    }
   }
 
   async function handleDragEnd(event: DragEndEvent) {
@@ -145,25 +156,40 @@ export default function AdminLinks() {
     const newIndex = links.findIndex((l) => l.id === over.id);
     const reordered = arrayMove(links, oldIndex, newIndex);
 
-    const batch = writeBatch(db);
-    reordered.forEach((link, index) => {
-      batch.update(doc(db, "links", link.id), { order: index });
-    });
-    await batch.commit();
+    setError("");
+    try {
+      const batch = writeBatch(db);
+      reordered.forEach((link, index) => {
+        batch.update(doc(db, "links", link.id), { order: index });
+      });
+      await batch.commit();
+    } catch (err) {
+      setError(`Failed to reorder: ${err instanceof Error ? err.message : "unknown error"}`);
+    }
   }
 
   async function handleYoutubeSettingsSave() {
-    await setDoc(doc(db, "settings", "home"), {
-      youtubeUrl,
-      youtubeEnabled,
-    });
-    setYtSaved(true);
-    clearTimeout(ytSavedTimer.current);
-    ytSavedTimer.current = setTimeout(() => setYtSaved(false), 2000);
+    setError("");
+    try {
+      await setDoc(doc(db, "settings", "home"), {
+        youtubeUrl,
+        youtubeEnabled,
+      });
+      setYtSaved(true);
+      clearTimeout(ytSavedTimer.current);
+      ytSavedTimer.current = setTimeout(() => setYtSaved(false), 2000);
+    } catch (err) {
+      setError(`Failed to save YouTube settings: ${err instanceof Error ? err.message : "unknown error"}`);
+    }
   }
 
   return (
     <div className="space-y-8">
+      {error && (
+        <div className="border border-red-400 rounded px-4 py-2 text-sm text-red-400">
+          {error}
+        </div>
+      )}
       {/* Link Form */}
       <form onSubmit={handleSubmit} className="space-y-3">
         <h2 className="text-sm font-bold text-terminal-green-muted">
