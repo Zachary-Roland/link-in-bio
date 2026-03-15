@@ -2,7 +2,7 @@ import SocialIcons from "./SocialIcons";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-terminal-green-faint md:mt-auto px-4 py-6">
+    <footer className="border-t border-terminal-green-faint md:mt-auto px-4 py-6 pb-20 md:pb-6">
       <div className="flex flex-col items-center gap-4">
         {/* Social icons: visible on mobile, hidden on desktop (sidebar has them) */}
         <SocialIcons className="md:hidden" />
