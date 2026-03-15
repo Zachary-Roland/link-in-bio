@@ -28,19 +28,28 @@ export function useShows() {
       return;
     }
     const q = query(collection(db, "shows"), orderBy("date", "asc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as Show[];
-      setShows(data);
-      setLoading(false);
-    });
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as Show[];
+        setShows(data);
+        setLoading(false);
+      },
+      (err) => {
+        console.error("Shows listener failed:", err);
+        setLoading(false);
+      }
+    );
     return unsubscribe;
   }, []);
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
   const upcomingShows = shows.filter(
-    (show) => show.date.toDate() >= new Date()
+    (show) => show.date.toDate() >= today
   );
 
   return { shows, upcomingShows, loading };

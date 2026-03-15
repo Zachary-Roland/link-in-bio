@@ -80,7 +80,7 @@ export default function AdminShows() {
   return (
     <div className="space-y-8">
       {error && (
-        <div className="border border-red-400 rounded px-4 py-2 text-sm text-red-400">
+        <div role="alert" className="border border-red-400 rounded px-4 py-2 text-sm text-red-400">
           {error}
         </div>
       )}

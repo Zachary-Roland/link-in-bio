@@ -12,7 +12,7 @@ export default function Sidebar() {
         <div className="text-terminal-green font-bold text-lg mb-6">
           zachary-roland
         </div>
-        <nav className="flex flex-col gap-1">
+        <nav className="flex flex-col gap-1" aria-label="Main navigation">
           {navItems.map((item) => (
             <NavLink
               key={item.to}

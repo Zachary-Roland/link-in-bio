@@ -26,14 +26,21 @@ export function useLinks() {
       return;
     }
     const q = query(collection(db, "links"), orderBy("order", "asc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as Link[];
-      setLinks(data);
-      setLoading(false);
-    });
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as Link[];
+        setLinks(data);
+        setLoading(false);
+      },
+      (err) => {
+        console.error("Links listener failed:", err);
+        setLoading(false);
+      }
+    );
     return unsubscribe;
   }, []);
 

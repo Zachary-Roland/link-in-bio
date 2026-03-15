@@ -21,12 +21,19 @@ export function useSettings() {
       setLoading(false);
       return;
     }
-    const unsubscribe = onSnapshot(doc(db, "settings", "home"), (snapshot) => {
-      if (snapshot.exists()) {
-        setSettings(snapshot.data() as HomeSettings);
+    const unsubscribe = onSnapshot(
+      doc(db, "settings", "home"),
+      (snapshot) => {
+        if (snapshot.exists()) {
+          setSettings(snapshot.data() as HomeSettings);
+        }
+        setLoading(false);
+      },
+      (err) => {
+        console.error("Settings listener failed:", err);
+        setLoading(false);
       }
-      setLoading(false);
-    });
+    );
     return unsubscribe;
   }, []);
 
