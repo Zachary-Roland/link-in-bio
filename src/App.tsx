@@ -12,11 +12,7 @@ export default function App() {
         <MobileNav />
         <main className="flex-1 overflow-y-auto pb-20 md:pb-0">
           <Suspense
-            fallback={
-              <div className="flex items-center justify-center min-h-screen">
-                <span className="text-terminal-green-muted loading-dots">loading</span>
-              </div>
-            }
+            fallback={<div className="fixed inset-0 z-[9998] bg-terminal-bg" />}
           >
             <Outlet />
           </Suspense>
