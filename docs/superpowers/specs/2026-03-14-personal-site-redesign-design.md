@@ -79,14 +79,14 @@ src/
 
 ### Home (Link-in-Bio Hub)
 - Name + short tagline ("software engineer // musician")
-- Optional profile photo/avatar
+- Optional profile photo/avatar (hardcoded asset in src/assets)
 - Dynamic link buttons from Firestore — each has label text + URL, admin-ordered
 - Optional YouTube embed (admin toggleable)
 
 ### About
 - A few paragraphs — developer by trade, musician by passion
 - Hardcoded content (edited in React source)
-- Optional photos
+- Optional photos (hardcoded assets in src/assets)
 
 ### Music
 - **Band profiles (hardcoded):** One section per band with:
@@ -119,7 +119,7 @@ src/
 - Prioritizes usability
 
 ### Links Manager
-- List of current links with drag-to-reorder or up/down arrows
+- List of current links with up/down arrows to reorder
 - Each link: label text + URL + edit/delete
 - "Add Link" button
 - YouTube embed toggle: on/off + URL field
@@ -128,7 +128,7 @@ src/
 - List of upcoming shows sorted by date
 - Each show: date, venue, city, optional ticket/event link + edit/delete
 - "Add Show" button
-- Past shows auto-hide or move to "past" section
+- Past shows are filtered out of the public Music page but remain visible in the admin dashboard for reference
 
 ## Firestore Data Model
 
@@ -149,7 +149,7 @@ settings/
 
 ## Accessibility (WCAG AA)
 
-- Green (#4af686) on dark navy (#1a1a2e) passes 4.5:1 contrast ratio (~6.5:1)
+- Green (#4af686) on dark navy (#1a1a2e) passes 4.5:1 contrast ratio (~12:1)
 - 16px+ base font size for readability
 - All interactive elements keyboard-navigable with visible green focus states
 - Semantic HTML: proper headings, nav landmarks, link roles
