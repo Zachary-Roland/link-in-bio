@@ -43,4 +43,14 @@
     animation: blink 1s step-end infinite;
     margin-left: 2px;
   }
+
+  /* Visible focus states for keyboard navigation */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-terminal-green;
+  }
+
+  /* Remove default focus ring when using mouse */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
 }
