@@ -15,6 +15,7 @@ export default function AdminShows() {
   const { shows } = useShows();
   const [editing, setEditing] = useState<Show | null>(null);
   const [date, setDate] = useState("");
+  const [billing, setBilling] = useState("");
   const [venue, setVenue] = useState("");
   const [city, setCity] = useState("");
   const [ticketUrl, setTicketUrl] = useState("");
@@ -23,6 +24,7 @@ export default function AdminShows() {
   function startEdit(show: Show) {
     setEditing(show);
     setDate(show.date.toDate().toISOString().split("T")[0] ?? "");
+    setBilling(show.billing ?? "");
     setVenue(show.venue);
     setCity(show.city);
     setTicketUrl(show.ticketUrl !== undefined ? show.ticketUrl : "");
@@ -31,6 +33,7 @@ export default function AdminShows() {
   function resetForm() {
     setEditing(null);
     setDate("");
+    setBilling("");
     setVenue("");
     setCity("");
     setTicketUrl("");
@@ -42,6 +45,7 @@ export default function AdminShows() {
     try {
       const data = {
         date: Timestamp.fromDate(new Date(date + "T00:00:00")),
+        billing,
         venue,
         city,
         ticketUrl: ticketUrl || null,
@@ -89,6 +93,14 @@ export default function AdminShows() {
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
+          required
+          className="w-full bg-transparent border border-terminal-green-faint rounded px-3 py-2 text-sm text-terminal-green focus:outline-none focus:border-terminal-green"
+        />
+        <input
+          type="text"
+          placeholder="Billing (e.g. Wedding, Bokr Tov w/ Big Nope)"
+          value={billing}
+          onChange={(e) => setBilling(e.target.value)}
           required
           className="w-full bg-transparent border border-terminal-green-faint rounded px-3 py-2 text-sm text-terminal-green focus:outline-none focus:border-terminal-green"
         />
@@ -167,7 +179,7 @@ export default function AdminShows() {
                   )}
                 </p>
                 <p className="text-xs text-terminal-green-muted truncate">
-                  {show.venue} — {show.city}
+                  {show.billing} — {show.venue}, {show.city}
                 </p>
               </div>
               <button

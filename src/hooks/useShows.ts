@@ -11,6 +11,7 @@ import { db, firebaseConfigured } from "../lib/firebase";
 export interface Show {
   id: string;
   date: Timestamp;
+  billing: string;
   venue: string;
   city: string;
   ticketUrl?: string;

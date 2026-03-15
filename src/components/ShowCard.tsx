@@ -17,6 +17,9 @@ export default function ShowCard({ show }: ShowCardProps) {
     <div className="border border-terminal-green-faint rounded px-4 py-3 flex items-center justify-between gap-4">
       <div>
         <p className="text-sm font-bold text-terminal-green">{formatted}</p>
+        {show.billing && (
+          <p className="text-sm text-terminal-green">{show.billing}</p>
+        )}
         <p className="text-sm text-terminal-green-muted">
           {show.venue} — {show.city}
         </p>
