@@ -56,17 +56,17 @@
     100% { background-position: 0 calc(100dvh + 120px); }
   }
 
-  /* Animated loading dots */
+  /* Animated loading dots — fixed width to prevent layout shift */
   @keyframes loading-dots {
-    0% { content: ""; }
-    25% { content: "."; }
-    50% { content: ".."; }
+    0% { content: "\00a0\00a0\00a0"; }
+    25% { content: ".\00a0\00a0"; }
+    50% { content: "..\00a0"; }
     75% { content: "..."; }
   }
 
   .loading-dots::after {
-    content: "";
-    animation: loading-dots 1.2s steps(1) infinite;
+    content: "\00a0\00a0\00a0";
+    animation: loading-dots 0.7s steps(1) infinite;
   }
 
   /* Blinking cursor animation */
