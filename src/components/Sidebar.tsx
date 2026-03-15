@@ -7,7 +7,7 @@ export default function Sidebar() {
   const { user } = useAuthContext();
 
   return (
-    <aside className="hidden md:flex w-64 flex-col border-r border-terminal-green-faint bg-terminal-bg p-6 justify-between shrink-0">
+    <aside className="hidden md:flex w-64 flex-col border-r border-terminal-green-faint bg-terminal-bg p-6 justify-between shrink-0 h-screen sticky top-0">
       <div>
         <div className="text-terminal-green font-bold text-lg mb-6">
           zachary-roland
