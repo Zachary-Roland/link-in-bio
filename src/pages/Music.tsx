@@ -14,7 +14,7 @@ const bands = [
     role: "Drums",
     description:
       "Omaha rock band with an eclectic mix of post-punk burners & jangly guitar-pop tunes.",
-    streamingLink: "https://bokrtov.supertape.site/music",
+    streamingLink: "https://bokr-tov.supertape.site/",
   },
 ];
 
