@@ -3,13 +3,18 @@ import ShowCard from "../components/ShowCard";
 
 const bands = [
   {
-    name: "Band Name Here",
-    role: "Guitar / Vocals",
-    description:
-      "A brief description of the band and what kind of music they play.",
-    streamingLink: "https://example.com/band-link",
+    name: "Wedding",
+    role: "Drums",
+    description: null,
+    streamingLink: "https://wedding.supertape.site/",
   },
-  // TODO: Zachary to add real band profiles
+  {
+    name: "Bokr Tov",
+    role: "Drums",
+    description:
+      "Omaha rock n' roll with an exciting live show & a broad range, equally at home in both post-punk burners & jangly guitar-pop tunes.",
+    streamingLink: "https://bokrtov.supertape.site/",
+  },
 ];
 
 export default function Music() {
@@ -34,9 +39,11 @@ export default function Music() {
               <p className="text-sm text-terminal-green-muted mt-1">
                 {band.role}
               </p>
-              <p className="text-sm text-terminal-green-muted mt-2">
-                {band.description}
-              </p>
+              {band.description && (
+                <p className="text-sm text-terminal-green-muted mt-2">
+                  {band.description}
+                </p>
+              )}
               <a
                 href={band.streamingLink}
                 target="_blank"

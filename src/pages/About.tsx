@@ -5,14 +5,21 @@ export default function About() {
 
       <div className="space-y-4 text-terminal-green-muted leading-relaxed">
         <p>
-          Hey, I'm Zachary — a software engineer by trade and a musician by
-          passion. I spend my days building things for the web and my nights
-          making noise with various bands.
+          I'm Zachary — a web developer, fashion designer, and drummer based in
+          Omaha. I build things for the web by day, design clothes when
+          inspiration strikes, and play drums in bands by night.
         </p>
         <p>
-          {/* TODO: Zachary to fill in real bio content */}
-          More details coming soon. In the meantime, check out my links or
-          browse my projects.
+          On the dev side, I've spent the last several years as a React
+          developer — building payment integrations, replacing legacy products,
+          and shipping client-facing tools. Before that I studied fashion
+          design, which turns out isn't as far from designing interfaces as
+          you'd think.
+        </p>
+        <p>
+          I trained as a percussionist and have been playing drums in bands for
+          over 10 years. Currently playing with Wedding and previously with Bokr
+          Tov.
         </p>
       </div>
     </div>
