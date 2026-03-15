@@ -11,7 +11,7 @@ const bands = [
   },
   {
     name: "Bokr Tov",
-    role: "Drums / Percussion",
+    role: "Drums",
     description:
       "Omaha rock band with an eclectic mix of post-punk burners & jangly guitar-pop tunes.",
     streamingLink: "https://bokrtov.supertape.site/music",
