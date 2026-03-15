@@ -8,14 +8,28 @@ export default function About() {
           Web developer, fashion designer, and musician based in Omaha.
         </p>
         <p>
-          I've spent the last several years as a React developer building
-          payment integrations, replacing legacy products, and shipping
-          client-facing tools. Before software I studied fashion design.
+          I've been playing drums in bands for over 10 years. Currently
+          playing with Wedding, previously with Bokr Tov and Big Nope.
         </p>
         <p>
-          I trained as a percussionist and have been playing drums in bands
-          for over 10 years. Currently playing with Wedding, previously with
-          Bokr Tov.
+          I've spent the last several years as a software developer building
+          applications at Talent Plus in Lincoln. My work has included
+          internal tools, ATS integrations, payment integrations, maintaining
+          legacy products, and shipping client-facing tools.
+        </p>
+        <p>
+          I studied fashion design and showed my debut collection at Omaha
+          Fashion Week in 2018 under the label Indigomaha. I recently
+          launched a new brand,{" "}
+          <a
+            href="https://itstrueblue.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-terminal-green hover:underline"
+          >
+            True Blue
+          </a>
+          .
         </p>
       </div>
     </div>
