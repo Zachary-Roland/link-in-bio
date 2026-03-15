@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-terminal-bg: #1a1a2e;
+  --color-terminal-green: #4af686;
+  --color-terminal-green-muted: #4af68680;
+  --color-terminal-green-faint: #4af68633;
+  --color-terminal-green-dim: #4af68620;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-terminal-bg text-terminal-green font-mono antialiased;
+    min-height: 100vh;
+  }
+
+  /* Scanline overlay — purely decorative (CSS pseudo-element, invisible to screen readers) */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(74, 246, 134, 0.02) 0px,
+      rgba(74, 246, 134, 0.02) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Blinking cursor animation */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .cursor-blink::after {
+    content: "█";
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+}

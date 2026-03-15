@@ -1,8 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import "./index.css";
 
 function App() {
-  return <h1>Hello Vite + React 19</h1>;
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <h1 className="text-3xl font-bold text-terminal-green">
+        zachary-roland<span className="cursor-blink"></span>
+      </h1>
+    </div>
+  );
 }
 
 createRoot(document.getElementById("root")!).render(
