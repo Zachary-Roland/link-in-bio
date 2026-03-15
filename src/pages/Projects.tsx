@@ -9,13 +9,6 @@ const projects = [
     url: "https://itstrueblue.com",
   },
   {
-    name: "SCInsta",
-    description:
-      "A feature-rich tweak for Instagram on iOS.",
-    tech: ["Objective-C", "iOS"],
-    url: "https://github.com/Zachary-Roland/SCInsta",
-  },
-  {
     name: "MyGarms",
     description:
       "Closet inventory management app with outfit planning. Full-stack with a separate React frontend and Express/MongoDB backend.",

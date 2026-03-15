@@ -21,15 +21,39 @@
     content: "";
     position: fixed;
     inset: 0;
+    pointer-events: none;
+    z-index: 9999;
     background: repeating-linear-gradient(
       0deg,
-      rgba(74, 246, 134, 0.02) 0px,
-      rgba(74, 246, 134, 0.02) 1px,
+      rgba(74, 246, 134, 0.04) 0px,
+      rgba(74, 246, 134, 0.04) 1px,
       transparent 1px,
       transparent 3px
     );
+  }
+
+  /* CRT scan beam that moves down the screen */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
     pointer-events: none;
     z-index: 9999;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(74, 246, 134, 0.03) 50%,
+      transparent 100%
+    );
+    background-size: 100% 120px;
+    background-repeat: no-repeat;
+    animation: scan-beam 6s linear infinite;
+    will-change: background-position;
+  }
+
+  @keyframes scan-beam {
+    0% { background-position: 0 -120px; }
+    100% { background-position: 0 calc(100dvh + 120px); }
   }
 
   /* Blinking cursor animation */
@@ -42,6 +66,17 @@
     content: "█";
     animation: blink 1s step-end infinite;
     margin-left: 2px;
+  }
+
+  /* Link button tap fill animation (mobile) */
+  @keyframes link-fill {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+  }
+
+  .animate-link-fill {
+    animation: link-fill 0.35s ease-out forwards;
+    transform-origin: right;
   }
 
   /* Visible focus states for keyboard navigation */
