@@ -119,7 +119,7 @@ src/
 - Prioritizes usability
 
 ### Links Manager
-- List of current links with up/down arrows to reorder
+- List of current links with drag-to-reorder
 - Each link: label text + URL + edit/delete
 - "Add Link" button
 - YouTube embed toggle: on/off + URL field
