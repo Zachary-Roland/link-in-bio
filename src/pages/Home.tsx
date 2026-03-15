@@ -14,9 +14,11 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (linksLoading || settingsLoading || minWait) {
+  const isLoading = linksLoading || settingsLoading || minWait;
+
+  if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-[50vh]">
+      <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-terminal-bg">
         <span className="text-terminal-green-muted loading-dots">loading</span>
       </div>
     );
