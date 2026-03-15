@@ -7,7 +7,7 @@ export default function MobileNav() {
 
   return (
     <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-terminal-green-faint bg-terminal-bg"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-[10000] border-t border-terminal-green-faint bg-terminal-bg pb-[env(safe-area-inset-bottom)]"
       aria-label="Mobile navigation"
     >
       <div className="flex items-center justify-around px-2 py-2.5">
