@@ -16,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center py-12 px-4 gap-4">
+    <div className="flex flex-col items-center py-8 md:py-12 px-4 gap-4">
       <img
         src="/profile.jpg"
         alt="Zachary Roland"
@@ -36,7 +36,7 @@ export default function Home() {
       )}
 
       {settings.youtubeEnabled && settings.youtubeUrl && (
-        <div className="mt-6">
+        <div className="mt-2">
           <YouTubeEmbed url={settings.youtubeUrl} />
         </div>
       )}
