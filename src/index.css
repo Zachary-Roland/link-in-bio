@@ -56,6 +56,19 @@
     100% { background-position: 0 calc(100dvh + 120px); }
   }
 
+  /* Animated loading dots */
+  @keyframes loading-dots {
+    0% { content: ""; }
+    25% { content: "."; }
+    50% { content: ".."; }
+    75% { content: "..."; }
+  }
+
+  .loading-dots::after {
+    content: "";
+    animation: loading-dots 1.2s steps(1) infinite;
+  }
+
   /* Blinking cursor animation */
   @keyframes blink {
     0%, 100% { opacity: 1; }

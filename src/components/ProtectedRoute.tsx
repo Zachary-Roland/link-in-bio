@@ -11,7 +11,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[50vh]">
-        <span className="text-terminal-green-muted">authenticating...</span>
+        <span className="text-terminal-green-muted loading-dots">authenticating</span>
       </div>
     );
   }

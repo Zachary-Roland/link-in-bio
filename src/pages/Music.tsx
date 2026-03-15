@@ -64,7 +64,7 @@ export default function Music() {
           upcoming shows
         </h2>
         {loading ? (
-          <p className="text-sm text-terminal-green-muted">loading...</p>
+          <p className="text-sm text-terminal-green-muted loading-dots">loading</p>
         ) : upcomingShows.length === 0 ? (
           <p className="text-sm text-terminal-green-muted">
             No upcoming shows.

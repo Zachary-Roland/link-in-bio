@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useLinks } from "../hooks/useLinks";
 import { useSettings } from "../hooks/useSettings";
 import LinkButton from "../components/LinkButton";
@@ -6,11 +7,17 @@ import YouTubeEmbed from "../components/YouTubeEmbed";
 export default function Home() {
   const { links, loading: linksLoading } = useLinks();
   const { settings, loading: settingsLoading } = useSettings();
+  const [minWait, setMinWait] = useState(true);
 
-  if (linksLoading || settingsLoading) {
+  useEffect(() => {
+    const timer = setTimeout(() => setMinWait(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (linksLoading || settingsLoading || minWait) {
     return (
       <div className="flex items-center justify-center min-h-[50vh]">
-        <span className="text-terminal-green-muted">loading...</span>
+        <span className="text-terminal-green-muted loading-dots">loading</span>
       </div>
     );
   }

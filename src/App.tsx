@@ -14,7 +14,7 @@ export default function App() {
           <Suspense
             fallback={
               <div className="flex items-center justify-center min-h-screen">
-                <span className="text-terminal-green-muted">loading...</span>
+                <span className="text-terminal-green-muted loading-dots">loading</span>
               </div>
             }
           >
