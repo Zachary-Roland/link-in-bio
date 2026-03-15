@@ -2,6 +2,13 @@ import ProjectCard from "../components/ProjectCard";
 
 const projects = [
   {
+    name: "zacharyroland.dev",
+    description:
+      "Terminal-inspired personal site with a link-in-bio home page, upcoming shows, music, projects, and more.",
+    tech: ["React", "TypeScript", "Firebase"],
+    url: "https://github.com/Zachary-Roland/zacharyroland.dev",
+  },
+  {
     name: "True Blue",
     description:
       "E-commerce site for my clothing brand — custom designs, curated vintage, and Americana menswear.",
