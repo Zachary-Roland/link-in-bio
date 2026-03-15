@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { Navigate, type RouteObject } from "react-router";
 import App from "./App";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -23,7 +24,11 @@ export const routes: RouteObject[] = [
       { path: "admin/login", element: <AdminLogin /> },
       {
         path: "admin",
-        element: <Admin />,
+        element: (
+          <ProtectedRoute>
+            <Admin />
+          </ProtectedRoute>
+        ),
         children: [
           { index: true, element: <Navigate to="links" replace /> },
           { path: "links", element: <AdminLinks /> },
