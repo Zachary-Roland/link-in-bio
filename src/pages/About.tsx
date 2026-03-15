@@ -12,10 +12,8 @@ export default function About() {
           playing with Wedding, previously with Bokr Tov and Big Nope.
         </p>
         <p>
-          I've spent the last several years as a software developer building
-          applications at Talent Plus in Lincoln. My work has included
-          internal tools, ATS integrations, payment integrations, maintaining
-          legacy products, and shipping client-facing tools.
+          Software developer at Talent Plus in Lincoln, working on
+          internal tools, client-facing applications, and integrations.
         </p>
         <p>
           I studied fashion design and showed my debut collection at Omaha

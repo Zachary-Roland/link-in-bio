@@ -76,7 +76,7 @@
 
   .animate-link-fill {
     animation: link-fill 0.35s ease-out forwards;
-    transform-origin: right;
+    transform-origin: left;
   }
 
   /* Visible focus states for keyboard navigation */

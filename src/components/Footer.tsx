@@ -7,10 +7,10 @@ export default function Footer() {
         {/* Social icons: visible on mobile, hidden on desktop (sidebar has them) */}
         <SocialIcons className="md:hidden" />
         <a
-          href="mailto:zachary@example.com"
+          href="mailto:zaroland95@gmail.com"
           className="text-sm text-terminal-green-muted hover:text-terminal-green transition-colors"
         >
-          zachary@example.com
+          zaroland95@gmail.com
         </a>
         <p className="text-xs text-terminal-green-muted">
           &copy; {new Date().getFullYear()} Zachary Roland
