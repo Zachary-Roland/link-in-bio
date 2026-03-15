@@ -2,12 +2,40 @@ import ProjectCard from "../components/ProjectCard";
 
 const projects = [
   {
-    name: "Project Name Here",
-    description: "A brief description of the project and what it does.",
-    tech: ["React", "TypeScript", "Firebase"],
-    url: "https://example.com",
+    name: "True Blue",
+    description:
+      "E-commerce site for my clothing brand — custom designs, curated vintage, and Americana menswear.",
+    tech: ["HTML", "CSS"],
+    url: "https://itstrueblue.com",
   },
-  // TODO: Zachary to add real projects
+  {
+    name: "SCInsta",
+    description:
+      "A feature-rich tweak for Instagram on iOS.",
+    tech: ["Objective-C", "iOS"],
+    url: "https://github.com/Zachary-Roland/SCInsta",
+  },
+  {
+    name: "MyGarms",
+    description:
+      "Closet inventory management app with outfit planning. Full-stack with a separate React frontend and Express/MongoDB backend.",
+    tech: ["React", "Express", "MongoDB"],
+    url: "https://github.com/Zachary-Roland/closet-app-react",
+  },
+  {
+    name: "Solitaire",
+    description:
+      "A solitaire card game built with React, React Router, Express, and MongoDB.",
+    tech: ["React", "Express", "MongoDB"],
+    url: "https://github.com/Zachary-Roland/solitaire",
+  },
+  {
+    name: "Blackjack",
+    description:
+      "Recreation of an iOS Blackjack game in vanilla JavaScript.",
+    tech: ["JavaScript", "HTML", "CSS"],
+    url: "https://github.com/Zachary-Roland/Blackjack-Game",
+  },
 ];
 
 export default function Projects() {

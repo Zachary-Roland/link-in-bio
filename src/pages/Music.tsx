@@ -4,16 +4,17 @@ import ShowCard from "../components/ShowCard";
 const bands = [
   {
     name: "Wedding",
-    role: "Drums",
-    description: null,
-    streamingLink: "https://wedding.supertape.site/",
+    role: "Drums / Percussion",
+    description:
+      "The creation of singer/songwriter and guitarist Anna Schulte, accompanied by C Allen Jenkins on bass, keys, and backup vocals.",
+    streamingLink: "https://wedding.supertape.site/music",
   },
   {
     name: "Bokr Tov",
-    role: "Drums",
+    role: "Drums / Percussion",
     description:
-      "Omaha rock n' roll with an exciting live show & a broad range, equally at home in both post-punk burners & jangly guitar-pop tunes.",
-    streamingLink: "https://bokrtov.supertape.site/",
+      "Omaha rock band with an eclectic mix of post-punk burners & jangly guitar-pop tunes.",
+    streamingLink: "https://bokrtov.supertape.site/music",
   },
 ];
 
