@@ -6,7 +6,7 @@ import {
   onSnapshot,
   Timestamp,
 } from "firebase/firestore";
-import { db } from "../lib/firebase";
+import { db, firebaseConfigured } from "../lib/firebase";
 
 export interface Show {
   id: string;
@@ -22,6 +22,10 @@ export function useShows() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!firebaseConfigured) {
+      setLoading(false);
+      return;
+    }
     const q = query(collection(db, "shows"), orderBy("date", "asc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => ({

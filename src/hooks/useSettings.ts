@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
-import { db } from "../lib/firebase";
+import { db, firebaseConfigured } from "../lib/firebase";
 
 export interface HomeSettings {
   youtubeUrl: string;
@@ -17,6 +17,10 @@ export function useSettings() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!firebaseConfigured) {
+      setLoading(false);
+      return;
+    }
     const unsubscribe = onSnapshot(doc(db, "settings", "home"), (snapshot) => {
       if (snapshot.exists()) {
         setSettings(snapshot.data() as HomeSettings);

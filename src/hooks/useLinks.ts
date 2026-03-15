@@ -6,7 +6,7 @@ import {
   onSnapshot,
   Timestamp,
 } from "firebase/firestore";
-import { db } from "../lib/firebase";
+import { db, firebaseConfigured } from "../lib/firebase";
 
 export interface Link {
   id: string;
@@ -21,6 +21,10 @@ export function useLinks() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!firebaseConfigured) {
+      setLoading(false);
+      return;
+    }
     const q = query(collection(db, "links"), orderBy("order", "asc"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => ({
