@@ -3,6 +3,7 @@ interface ProjectCardProps {
   description: string;
   tech: string[];
   url: string;
+  liveUrl?: string;
 }
 
 export default function ProjectCard({
@@ -10,10 +11,24 @@ export default function ProjectCard({
   description,
   tech,
   url,
+  liveUrl,
 }: ProjectCardProps) {
   return (
     <div className="border border-terminal-green-faint rounded p-4">
-      <h3 className="font-bold text-terminal-green">{name}</h3>
+      <h3 className="font-bold text-terminal-green">
+        {liveUrl ? (
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            {name}
+          </a>
+        ) : (
+          name
+        )}
+      </h3>
       <p className="text-sm text-terminal-green-muted mt-1">{description}</p>
       <div className="flex flex-wrap gap-2 mt-3">
         {tech.map((t) => (

@@ -2,18 +2,19 @@ import ProjectCard from "../components/ProjectCard";
 
 const projects = [
   {
+    name: "Roland J-6 Chord Engine",
+    description:
+      "Companion app for the Roland AIRA J-6 Chord Synth — browse chord sets, discover progressions, build sequences.",
+    tech: ["React", "TypeScript", "Firebase"],
+    url: "https://github.com/Zachary-Roland/roland-j6-chord-engine",
+    liveUrl: "https://roland-j6-chord-guide.web.app/",
+  },
+  {
     name: "zacharyroland.dev",
     description:
       "Terminal-inspired personal site with a link-in-bio home page, upcoming shows, music, projects, and more.",
     tech: ["React", "TypeScript", "Firebase"],
     url: "https://github.com/Zachary-Roland/zacharyroland.dev",
-  },
-  {
-    name: "True Blue",
-    description:
-      "E-commerce site for my clothing brand — custom designs, curated vintage, and Americana menswear.",
-    tech: ["HTML", "CSS"],
-    url: "https://itstrueblue.com",
   },
   {
     name: "MyGarms",
