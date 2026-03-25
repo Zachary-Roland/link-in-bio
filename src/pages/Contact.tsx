@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 const stats = [
@@ -12,9 +12,14 @@ const techStack = ["React", "TypeScript", "Firebase", "Tailwind", "Node.js"];
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
+  const successRef = useRef<HTMLParagraphElement>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  async function handleSubmit(e: React.FormEvent) {
+  useEffect(() => {
+    if (status === "sent") successRef.current?.focus();
+  }, [status]);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!formRef.current) return;
     setStatus("sending");
@@ -71,7 +76,9 @@ export default function Contact() {
         <h2 className="text-gray-900 font-bold text-lg">Let&apos;s work together</h2>
 
         {status === "sent" ? (
-          <p className="text-terminal-green font-mono text-sm">&gt; message sent — I&apos;ll be in touch soon.</p>
+          <p ref={successRef} role="status" tabIndex={-1} className="text-green-700 font-mono text-sm outline-none">
+            &gt; message sent — I&apos;ll be in touch soon.
+          </p>
         ) : (
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1">
@@ -83,6 +90,7 @@ export default function Contact() {
                 name="from_name"
                 type="text"
                 required
+                autoComplete="name"
                 placeholder="Your name"
                 className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-terminal-green focus:border-transparent transition-all"
               />
@@ -97,6 +105,7 @@ export default function Contact() {
                 name="reply_to"
                 type="email"
                 required
+                autoComplete="email"
                 placeholder="you@example.com"
                 className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-terminal-green focus:border-transparent transition-all"
               />
@@ -111,15 +120,16 @@ export default function Contact() {
                 name="message"
                 required
                 rows={5}
+                maxLength={2000}
                 placeholder="Tell me about your project..."
                 className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-terminal-green focus:border-transparent transition-all resize-none"
               />
             </div>
 
             {status === "error" && (
-              <p className="text-sm text-red-500">
+              <p role="alert" className="text-sm text-red-600">
                 Failed to send —{" "}
-                <a href="mailto:zaroland95@gmail.com" className="underline hover:text-red-700">
+                <a href="mailto:zaroland95@gmail.com" className="underline hover:text-red-800">
                   email me directly
                 </a>
               </p>

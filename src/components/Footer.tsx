@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="flex flex-col items-center gap-4">
         {/* Social icons: visible on mobile, hidden on desktop (sidebar has them) */}
         <SocialIcons className="md:hidden" />
-        {pathname !== "/contact" && (
+        {!pathname.startsWith("/contact") && (
           <Link
             to="/contact"
             className="text-sm border border-terminal-green px-4 py-1 rounded hover:bg-terminal-green hover:text-terminal-bg transition-colors"
