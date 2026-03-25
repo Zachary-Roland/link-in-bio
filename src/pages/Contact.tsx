@@ -66,10 +66,81 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Form panel — added in Task 6 */}
-      <form ref={formRef} onSubmit={handleSubmit} className="hidden" aria-hidden>
-        {status === "idle" && null}
-      </form>
+      {/* Form panel */}
+      <div className="border border-terminal-green-faint rounded p-6 space-y-6">
+        <p className="text-terminal-green-muted text-sm font-mono">
+          ~/contact $ new-message
+        </p>
+
+        {status === "sent" ? (
+          <p className="text-terminal-green font-mono">&gt; message sent</p>
+        ) : (
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-1">
+              <label htmlFor="from_name" className="block text-xs text-terminal-green-muted">
+                name
+              </label>
+              <input
+                id="from_name"
+                name="from_name"
+                type="text"
+                required
+                className="w-full bg-transparent border-b border-terminal-green-faint text-terminal-green text-sm py-1 outline-none focus:border-terminal-green transition-colors"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label htmlFor="reply_to" className="block text-xs text-terminal-green-muted">
+                email
+              </label>
+              <input
+                id="reply_to"
+                name="reply_to"
+                type="email"
+                required
+                className="w-full bg-transparent border-b border-terminal-green-faint text-terminal-green text-sm py-1 outline-none focus:border-terminal-green transition-colors"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label htmlFor="message" className="block text-xs text-terminal-green-muted">
+                message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={5}
+                className="w-full bg-transparent border-b border-terminal-green-faint text-terminal-green text-sm py-1 outline-none focus:border-terminal-green transition-colors resize-none"
+              />
+            </div>
+
+            {status === "error" && (
+              <p className="text-sm font-mono text-terminal-green-muted">
+                &gt; failed to send —{" "}
+                <a
+                  href="mailto:zaroland95@gmail.com"
+                  className="text-terminal-green hover:underline"
+                >
+                  try zaroland95@gmail.com
+                </a>
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="border border-terminal-green px-4 py-1 text-sm hover:bg-terminal-green hover:text-terminal-bg transition-colors disabled:opacity-50"
+            >
+              {status === "sending" ? (
+                <span className="loading-dots">sending</span>
+              ) : (
+                "send message"
+              )}
+            </button>
+          </form>
+        )}
+      </div>
     </div>
   );
 }
