@@ -13,7 +13,7 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
     const isChunkError = error.message.includes("dynamically imported module");
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-terminal-bg text-terminal-green font-mono px-4">
-        <div className="w-full max-w-md space-y-4">
+        <div role="alert" className="w-full max-w-md space-y-4">
           <p className="text-terminal-green-muted text-xs">zacharyroland.dev ~ %</p>
           {isChunkError ? (
             <>

@@ -22,7 +22,7 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-terminal-bg">
+      <div role="status" aria-live="polite" className="fixed inset-0 z-[9998] flex items-center justify-center bg-terminal-bg">
         <span className="text-terminal-green-muted loading-dots">loading</span>
       </div>
     );

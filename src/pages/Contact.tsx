@@ -32,33 +32,33 @@ export default function Contact() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto py-12 px-4 space-y-6">
+    <div className="max-w-2xl mx-auto py-6 md:py-12 px-4 space-y-6">
       <h1 className="text-2xl font-bold">~/contact</h1>
 
       {/* Pitch panel */}
-      <div className="border border-terminal-green-faint rounded p-6 space-y-4">
-        <p className="text-terminal-green-muted text-sm font-mono">
-          ~/freelance $ status --available
-        </p>
-        <p className="text-terminal-green text-sm font-mono">
-          &gt; accepting new clients
-        </p>
-        <p className="text-xl font-bold">I&apos;ll build your website.</p>
+      <div className="border border-terminal-green-muted rounded-lg p-4 md:p-6 space-y-4 md:space-y-5">
+        <div>
+          <p className="text-terminal-green-muted text-xs font-mono mb-1">
+            ~/freelance $ status --available
+          </p>
+          <p className="text-terminal-green text-sm font-mono">&gt; accepting new clients</p>
+        </div>
+        <p className="text-2xl font-bold">I&apos;ll build your website.</p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 pt-1">
           {stats.map((stat) => (
             <div key={stat.value} className="space-y-1">
-              <p className="text-2xl font-bold text-terminal-green">{stat.value}</p>
+              <p className="text-2xl md:text-3xl font-bold text-terminal-green">{stat.value}</p>
               <p className="text-xs text-terminal-green-muted leading-snug">{stat.label}</p>
             </div>
           ))}
         </div>
 
-        <div className="flex flex-wrap gap-2 pt-2">
+        <div className="flex flex-wrap gap-2 pt-1">
           {techStack.map((tech) => (
             <span
               key={tech}
-              className="text-xs px-2 py-0.5 border border-terminal-green-faint rounded text-terminal-green-muted"
+              className="text-xs px-2 py-0.5 border border-terminal-green rounded text-terminal-green"
             >
               {tech}
             </span>
@@ -67,62 +67,60 @@ export default function Contact() {
       </div>
 
       {/* Form panel */}
-      <div className="border border-terminal-green-faint rounded p-6 space-y-6">
-        <p className="text-terminal-green-muted text-sm font-mono">
-          ~/contact $ new-message
-        </p>
+      <div className="bg-white rounded-lg p-6 space-y-5 shadow-sm">
+        <h2 className="text-gray-900 font-bold text-lg">Let&apos;s work together</h2>
 
         {status === "sent" ? (
-          <p className="text-terminal-green font-mono">&gt; message sent</p>
+          <p className="text-terminal-green font-mono text-sm">&gt; message sent — I&apos;ll be in touch soon.</p>
         ) : (
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1">
-              <label htmlFor="from_name" className="block text-xs text-terminal-green-muted">
-                name
+              <label htmlFor="from_name" className="block text-xs font-medium text-gray-500 uppercase tracking-wide">
+                Name
               </label>
               <input
                 id="from_name"
                 name="from_name"
                 type="text"
                 required
-                className="w-full bg-transparent border-b border-terminal-green-faint text-terminal-green text-sm py-1 outline-none focus:border-terminal-green transition-colors"
+                placeholder="Your name"
+                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-terminal-green focus:border-transparent transition-all"
               />
             </div>
 
             <div className="space-y-1">
-              <label htmlFor="reply_to" className="block text-xs text-terminal-green-muted">
-                email
+              <label htmlFor="reply_to" className="block text-xs font-medium text-gray-500 uppercase tracking-wide">
+                Email
               </label>
               <input
                 id="reply_to"
                 name="reply_to"
                 type="email"
                 required
-                className="w-full bg-transparent border-b border-terminal-green-faint text-terminal-green text-sm py-1 outline-none focus:border-terminal-green transition-colors"
+                placeholder="you@example.com"
+                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-terminal-green focus:border-transparent transition-all"
               />
             </div>
 
             <div className="space-y-1">
-              <label htmlFor="message" className="block text-xs text-terminal-green-muted">
-                message
+              <label htmlFor="message" className="block text-xs font-medium text-gray-500 uppercase tracking-wide">
+                Message
               </label>
               <textarea
                 id="message"
                 name="message"
                 required
                 rows={5}
-                className="w-full bg-transparent border-b border-terminal-green-faint text-terminal-green text-sm py-1 outline-none focus:border-terminal-green transition-colors resize-none"
+                placeholder="Tell me about your project..."
+                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-terminal-green focus:border-transparent transition-all resize-none"
               />
             </div>
 
             {status === "error" && (
-              <p className="text-sm font-mono text-terminal-green-muted">
-                &gt; failed to send —{" "}
-                <a
-                  href="mailto:zaroland95@gmail.com"
-                  className="text-terminal-green hover:underline"
-                >
-                  try zaroland95@gmail.com
+              <p className="text-sm text-red-500">
+                Failed to send —{" "}
+                <a href="mailto:zaroland95@gmail.com" className="underline hover:text-red-700">
+                  email me directly
                 </a>
               </p>
             )}
@@ -130,12 +128,12 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="border border-terminal-green px-4 py-1 text-sm hover:bg-terminal-green hover:text-terminal-bg transition-colors disabled:opacity-50"
+              className="w-full bg-terminal-green text-terminal-bg font-bold py-2 px-4 rounded-md hover:opacity-90 transition-opacity disabled:opacity-50 text-sm"
             >
               {status === "sending" ? (
-                <span className="loading-dots">sending</span>
+                <span className="loading-dots">Sending</span>
               ) : (
-                "send message"
+                "Send Message"
               )}
             </button>
           </form>

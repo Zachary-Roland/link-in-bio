@@ -3,7 +3,7 @@
 @theme {
   --color-terminal-bg: #1a1a2e;
   --color-terminal-green: #4af686;
-  --color-terminal-green-muted: #4af68680;
+  --color-terminal-green-muted: #4af68699;
   --color-terminal-green-faint: #4af68633;
   --color-terminal-green-dim: #4af68620;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -90,6 +90,24 @@
   .animate-link-fill {
     animation: link-fill 0.35s ease-out forwards;
     transform-origin: left;
+  }
+
+  /* Disable non-essential animations for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .cursor-blink::after {
+      animation: none;
+    }
+    .loading-dots::after {
+      animation: none;
+      content: "...";
+    }
+    .animate-link-fill {
+      animation: none;
+      transform: scaleX(1);
+    }
+    body::before {
+      animation: none;
+    }
   }
 
   /* Visible focus states for keyboard navigation */
