@@ -46,6 +46,7 @@ const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const Admin = lazy(() => import("./pages/Admin"));
 const AdminLinks = lazy(() => import("./pages/AdminLinks"));
 const AdminShows = lazy(() => import("./pages/AdminShows"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 export const routes: RouteObject[] = [
   {
@@ -57,6 +58,7 @@ export const routes: RouteObject[] = [
       { path: "about", element: <About /> },
       { path: "music", element: <Music /> },
       { path: "projects", element: <Projects /> },
+      { path: "contact", element: <Contact /> },
       { path: "admin/login", element: <AdminLogin /> },
       {
         path: "admin",
