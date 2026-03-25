@@ -31,3 +31,6 @@ vite.config.d.ts
 
 # Superpowers tooling
 .superpowers/
+
+# Git worktrees
+.worktrees/
