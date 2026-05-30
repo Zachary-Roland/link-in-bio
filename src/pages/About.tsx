@@ -5,15 +5,14 @@ export default function About() {
 
       <div className="space-y-4 text-terminal-green-muted leading-relaxed">
         <p>
-          Web developer, fashion designer, and musician based in Omaha.
+          Software engineer, fashion designer, and musician based in Omaha.
         </p>
         <p>
           I've been playing drums in bands for over 10 years. Currently
           playing with Wedding, previously with Bokr Tov and Big Nope.
         </p>
         <p>
-          Software developer at Talent Plus in Lincoln, working on
-          internal tools, client-facing applications, and integrations.
+          Software engineer at Workshop in Omaha.
         </p>
         <p>
           I studied fashion design and showed my debut collection at Omaha

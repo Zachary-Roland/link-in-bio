@@ -16,6 +16,12 @@ const bands = [
       "Omaha rock band with an eclectic mix of post-punk burners & jangly guitar-pop tunes.",
     streamingLink: "https://bokr-tov.supertape.site/",
   },
+  {
+    name: "Penny Slots",
+    role: "Drum Machine + Synthesizers",
+    description: "try yøur lučk",
+    streamingLink: "https://www.instagram.com/pennyslots_",
+  }
 ];
 
 export default function Music() {
